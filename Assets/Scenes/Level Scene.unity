@@ -679,7 +679,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameInit
   levelManager: {fileID: 1263653750}
-  startingLevel: {fileID: 3800087004764777429, guid: fcbcaa52f9522431e8f3f50264a85b82, type: 3}
+  startingLevel:
+    nextLevel: {fileID: 3800087004764777429, guid: fcbcaa52f9522431e8f3f50264a85b82, type: 3}
+    entranceIndex: 0
 --- !u!1 &1220194070
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,6 +777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelReference
   levelManager: {fileID: 1263653750}
+  player: {fileID: 6937383}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

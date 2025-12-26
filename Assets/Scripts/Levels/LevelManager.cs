@@ -8,16 +8,16 @@ public class LevelManager : MonoBehaviour
     [ReadOnly][SerializeField] Level loadedLevel;
     
     [Button("Load Level")]
-    public void LoadLevel(GameObject level)
+    public void LoadLevel(LevelLoadInfo levelInfo)
     {
         if (loadedLevel != null)
         {
             UnloadLevel();
         }
         
-        loadedLevel = Instantiate(level, transform).GetComponent<Level>();
+        loadedLevel = Instantiate(levelInfo.nextLevel, transform).GetComponent<Level>();
         Debug.Assert(loadedLevel != null, "Loaded level does not contain a Level component");
-        loadedLevel.Load(levelReference);
+        loadedLevel.Load(levelInfo, levelReference);
     }
 
     void UnloadLevel()

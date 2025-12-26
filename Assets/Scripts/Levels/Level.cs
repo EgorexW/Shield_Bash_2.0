@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class Level : MonoBehaviour
@@ -10,19 +11,20 @@ public class Level : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Load(LevelReference levelReferenceTmp)
+    public void Load(LevelLoadInfo levelInfo, LevelReference levelReferenceTmp)
     {
         foreach (var levelObject in GetComponentsInChildren<ILevelObject>())
         {
             levelObject.parentLevel = this;
         }
         levelReference = levelReferenceTmp;
+        var levelEntrances = GetComponentsInChildren<LevelEntrance>();
+        var entrance = levelEntrances.First(le => le.entranceIndex == levelInfo.entranceIndex);
+        entrance.TeleportPlayerToEntrance(levelReference);
     }
 
-    public void ExitToLevel(GameObject nextLevel)
+    public void MoveToLevel(LevelLoadInfo loadInfo)
     {
-        // Implement level transition logic here
-        Debug.Log($"Exiting to level: {nextLevel.name}");
-        levelReference.ExitToLevel(nextLevel);
+        levelReference.MoveToLevel(loadInfo);
     }
 }

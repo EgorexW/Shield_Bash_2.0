@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameInit : MonoBehaviour
 {
     [BoxGroup("References")][Required][SerializeField] LevelManager levelManager;
-    [BoxGroup("References")][Required][SerializeField] GameObject startingLevel;
+    [BoxGroup("References")][Required][SerializeField] LevelLoadInfo startingLevel;
     
     void Start()
     {

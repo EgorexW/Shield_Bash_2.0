@@ -17,14 +17,27 @@ public class InputHandler : MonoBehaviour
 
     void OnActionTriggered(InputAction.CallbackContext obj)
     {
+        if (obj.action.actionMap.name != "Player"){
+            return;
+        }
         switch (obj.action.name){
             case "Move":
                 OnMovePerformed(obj);
+                break;
+            case "Target":
+                OnTargetPerformed(obj);
                 break;
             default:
                 Debug.LogWarning("Unhandled action: " + obj.action.name);
                 break;
         }
+    }
+
+    void OnTargetPerformed(InputAction.CallbackContext obj)
+    {
+        Vector2 lookPoint = obj.ReadValue<Vector2>();
+        lookPoint = General.GetMouseWorldPos(lookPoint);
+        characterMovement.SetTarget(lookPoint);
     }
 
     void OnMovePerformed(InputAction.CallbackContext obj)

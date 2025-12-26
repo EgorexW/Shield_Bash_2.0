@@ -13,6 +13,13 @@ class CharacterMovement : MonoBehaviour
     {
         movement = inputVector.normalized;
     }
+
+    public void SetTarget(Vector2 lookPoint)
+    {
+        var lookDir = lookPoint - (Vector2)transform.position;
+        // lookDir.Normalize();
+        rb.transform.rotation = Quaternion.LookRotation(Vector3.forward, lookDir);
+    }
     
     void Update()
     {

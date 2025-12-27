@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    LevelReference levelReference;
+    public LevelReference levelReference;
     
     public void Unload()
     {
@@ -20,6 +21,9 @@ public class Level : MonoBehaviour
         levelReference = levelReferenceTmp;
         var levelEntrances = GetComponentsInChildren<LevelEntrance>();
         var entrance = levelEntrances.First(le => le.entranceIndex == levelInfo.entranceIndex);
+        foreach (var cacheRequester in GetComponentsInChildren<ICacheRequester>()){
+            cacheRequester.SetCacheParent(levelReference.GetCacheParent());
+        }
         entrance.TeleportPlayerToEntrance(levelReference);
     }
 
@@ -27,4 +31,9 @@ public class Level : MonoBehaviour
     {
         levelReference.MoveToLevel(loadInfo);
     }
+}
+
+public interface ICacheRequester
+{
+    void SetCacheParent(Transform parent);
 }

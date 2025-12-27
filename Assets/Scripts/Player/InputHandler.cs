@@ -2,6 +2,7 @@ using Nrjwolf.Tools.AttachAttributes;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(PlayerInput))]
 public class InputHandler : MonoBehaviour
@@ -9,6 +10,7 @@ public class InputHandler : MonoBehaviour
     [GetComponent][SerializeField] PlayerInput playerInput;
     
     [BoxGroup("References")][Required][SerializeField] CharacterMovement characterMovement;
+    [BoxGroup("References")][Required][SerializeField] Shield shieldInput;
     
     private void Awake()
     {
@@ -27,9 +29,26 @@ public class InputHandler : MonoBehaviour
             case "Target":
                 OnTargetPerformed(obj);
                 break;
+            case "Shield":
+                OnShootPerformed(obj);
+                break;
             default:
                 Debug.LogWarning("Unhandled action: " + obj.action.name);
                 break;
+        }
+    }
+
+    void OnShootPerformed(InputAction.CallbackContext obj)
+    {
+        var isPressed = obj.ReadValue<float>();
+        // Debug.Log("Shield input: " + isPressed);
+        if (isPressed > 0.5f)
+        {
+            shieldInput.Raise();
+        }
+        else
+        {
+            shieldInput.Release();
         }
     }
 

@@ -14,4 +14,13 @@ public class LevelReference : MonoBehaviour
     {
         player.Teleport(position);
     }
+    public Player GetPlayer()
+    {
+        return player;
+    }
+
+    public Transform GetCacheParent()
+    {
+        return levelManager.GetLevelCacheParent();
+    }
 }

@@ -2,10 +2,9 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-[Serializable]
-public class Animation
+[CreateAssetMenu(fileName = "Animation", menuName = "Egorex/Animation")]
+public class Animation : ScriptableObject
 {
-    public string name;
     public AnimationCell[] animationCells;
 #if UNITY_EDITOR
     [OnValueChanged("SetCellsDuration")] [SerializeField] float defaultCellDuration;

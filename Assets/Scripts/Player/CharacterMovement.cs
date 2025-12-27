@@ -21,9 +21,9 @@ class CharacterMovement : MonoBehaviour
         rb.transform.rotation = Quaternion.LookRotation(Vector3.forward, lookDir);
     }
     
-    void Update()
+    void FixedUpdate()
     {
-        Vector2 move = movement * (speed * Time.deltaTime);
+        Vector2 move = movement * (speed * Time.fixedDeltaTime);
         rb.MovePosition(rb.position + move);
     }
 }

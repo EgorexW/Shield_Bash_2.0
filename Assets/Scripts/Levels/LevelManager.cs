@@ -4,6 +4,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     [BoxGroup("References")] [Required] [SerializeField] LevelReference levelReference;
+    [BoxGroup("References")] [Required] [SerializeField] Transform levelCacheParent;
     
     [ReadOnly][SerializeField] Level loadedLevel;
     
@@ -26,6 +27,19 @@ public class LevelManager : MonoBehaviour
             return;
         }
         loadedLevel.Unload();
+        foreach (Transform child in levelCacheParent){
+            Destroy(child.gameObject);
+        }
         loadedLevel = null;
+    }
+
+    public Transform GetPlayerCacheParent()
+    {
+        return levelCacheParent;
+    }
+
+    public Transform GetLevelCacheParent()
+    {
+        return levelCacheParent;
     }
 }

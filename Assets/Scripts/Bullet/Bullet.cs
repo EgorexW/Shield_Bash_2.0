@@ -2,26 +2,27 @@ using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 public class Bullet : MonoBehaviour
 {
     [BoxGroup("References")] [Required] [SerializeField] Rigidbody2D rb;
 
-    [SerializeField] BulletStats bulletStats;
+    [FormerlySerializedAs("bulletStats")] [SerializeField] public BulletStats stats;
     
     List<GameObject> ignoreObjects = new();
     float deathTime;
 
     void Start()
     {
-        deathTime = Time.time + bulletStats.lifeTime;
+        deathTime = Time.time + stats.lifeTime;
     }
 
     void FixedUpdate()
     {
         Vector2 movement = rb.transform.up;
-        Vector2 move = movement * (bulletStats.speed * Time.fixedDeltaTime);
+        Vector2 move = movement * (stats.speed * Time.fixedDeltaTime);
         rb.MovePosition(rb.position + move);
     }
 
@@ -42,9 +43,9 @@ public class Bullet : MonoBehaviour
         var damageable = other.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            damageable.TakeDamage(bulletStats.damage);
+            damageable.TakeDamage(stats.damage);
         }
-        if (bulletStats.pierce){
+        if (stats.pierce){
             return;
         }
         Destroy();
@@ -69,7 +70,7 @@ public class Bullet : MonoBehaviour
 [Serializable][BoxGroup("Bullet Stats")][InlineProperty][HideLabel]
 public class BulletStats
 {
-    public float speed = 200f;
+    public float speed = 10f;
     public float lifeTime = 5f;
     public bool pierce = false;
     public Damage damage = new Damage();

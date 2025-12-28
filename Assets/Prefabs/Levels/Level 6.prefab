@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   loadInfo:
-    nextLevel: {fileID: 3800087004764777429, guid: 10de749fc598043fbae910441eb744c7, type: 3}
+    nextLevel: {fileID: 3800087004764777429, guid: 04494db1c24544aa683d813e37354e74, type: 3}
     entranceIndex: 2
 --- !u!61 &4213693990705091258
 BoxCollider2D:
@@ -2524,7 +2524,7 @@ PrefabInstance:
     - target: {fileID: 7939932044266323614, guid: 4f3219b76973b44cf88ca263c509e9cb, type: 3}
       propertyPath: loadInfo.nextLevel
       value: 
-      objectReference: {fileID: 3800087004764777429, guid: 5b9caffa1a4fd45dfb5e44e6e4d81b9c, type: 3}
+      objectReference: {fileID: 3800087004764777429, guid: 10de749fc598043fbae910441eb744c7, type: 3}
     - target: {fileID: 9023040401406758402, guid: 4f3219b76973b44cf88ca263c509e9cb, type: 3}
       propertyPath: m_Tiles.Array.size
       value: 144

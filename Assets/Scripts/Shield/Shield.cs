@@ -2,7 +2,7 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-class Shield : MonoBehaviour
+public class Shield : MonoBehaviour
 {
     [SerializeField][ReadOnly] bool held = false;
     [SerializeField][ReadOnly] ShieldState state;
@@ -13,7 +13,7 @@ class Shield : MonoBehaviour
     [BoxGroup("References")][Required][SerializeField] Collider2D shieldCollider;
     [BoxGroup("References")][Required][SerializeField] GameObject bulletPrefab;
     
-    [SerializeField] ShieldStats stats;
+    [SerializeField] public ShieldStats stats;
 
 
     void Awake()
@@ -82,6 +82,7 @@ class Shield : MonoBehaviour
     void Shoot()
     {
         var bullet = Instantiate(bulletPrefab, shieldTransform.position, shieldTransform.rotation, player.GetCacheParent()).GetComponent<Bullet>();
+        bullet.stats = stats.bulletStats;
         bullet.IgnoreGameObject(player.gameObject);
         Release();
         Hide();
@@ -114,13 +115,15 @@ class Shield : MonoBehaviour
 }
 
 [Serializable][BoxGroup("Shield Stats")][InlineProperty][HideLabel]
-class ShieldStats
+public class ShieldStats
 {
     [BoxGroup("Values")] public float raiseTime = 0.5f;
     [BoxGroup("Values")] public float hideTime = 0.5f;
 
     [BoxGroup("Abilities")] public bool canBlock;
     [BoxGroup("Abilities")] public bool canShoot;
+    
+    public BulletStats bulletStats;
 }
 
 enum ShieldState

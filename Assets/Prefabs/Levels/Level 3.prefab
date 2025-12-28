@@ -230,8 +230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   loadInfo:
-    nextLevel: {fileID: 3800087004764777429, guid: 8db78baa9f9224944af9d5319fa4d937, type: 3}
-    entranceIndex: 0
+    nextLevel: {fileID: 3800087004764777429, guid: 9c981e01616ba4943a852d0ed4bec73a, type: 3}
+    entranceIndex: 6
 --- !u!61 &2004208654950980159
 BoxCollider2D:
   m_ObjectHideFlags: 0

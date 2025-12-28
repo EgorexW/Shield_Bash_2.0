@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   levelManager: {fileID: 1263653750}
+  shield: {fileID: 1739741113}
 --- !u!114 &6937384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1426,6 +1427,12 @@ MonoBehaviour:
     hideTime: 0.2
     canBlock: 0
     canShoot: 1
+    bulletStats:
+      speed: 20
+      lifeTime: 5
+      pierce: 0
+      damage:
+        value: 1
 --- !u!1 &2036972922
 GameObject:
   m_ObjectHideFlags: 0

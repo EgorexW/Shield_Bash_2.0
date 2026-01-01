@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    [BoxGroup("References")][Required][SerializeField] PrefabList levelsPrefabList;
     [BoxGroup("References")] [Required] [SerializeField] LevelReference levelReference;
     [BoxGroup("References")] [Required] [SerializeField] Transform levelCacheParent;
     
@@ -15,7 +16,9 @@ public class LevelManager : MonoBehaviour
         {
             UnloadLevel();
         }
-        
+        if (levelInfo.nextLevel == null){
+            levelInfo.nextLevel = levelsPrefabList.prefabs[levelInfo.nextLevelIndex];
+        }
         loadedLevel = Instantiate(levelInfo.nextLevel, transform).GetComponent<Level>();
         Debug.Assert(loadedLevel != null, "Loaded level does not contain a Level component");
         loadedLevel.Load(levelInfo, levelReference);
@@ -41,5 +44,10 @@ public class LevelManager : MonoBehaviour
     public Transform GetLevelCacheParent()
     {
         return levelCacheParent;
+    }
+
+    public Level GetLoadedLevel()
+    {
+        return loadedLevel;
     }
 }

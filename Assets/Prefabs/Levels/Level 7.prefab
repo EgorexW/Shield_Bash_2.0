@@ -47,7 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   loadInfo:
     nextLevel: {fileID: 3800087004764777429, guid: 426f533463eba4d3d8964cd7da08083a, type: 3}
-    entranceIndex: 2
+    nextLevelIndex: 0
+    entranceIndex: 3
 --- !u!61 &4213693990705091258
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -102,6 +103,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7461204580274333006, guid: 4f3219b76973b44cf88ca263c509e9cb, type: 3}
+      propertyPath: prefabListIndex
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 20229885917766207, guid: 4f3219b76973b44cf88ca263c509e9cb, type: 3}
+      propertyPath: prefabListIndexHolder
+      value: 
+      objectReference: {fileID: 266562673315217167}
     - target: {fileID: 3133138930921346994, guid: 4f3219b76973b44cf88ca263c509e9cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -145,6 +154,10 @@ PrefabInstance:
     - target: {fileID: 3421577238158167656, guid: 4f3219b76973b44cf88ca263c509e9cb, type: 3}
       propertyPath: m_Name
       value: Level 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310774014869076895, guid: 4f3219b76973b44cf88ca263c509e9cb, type: 3}
+      propertyPath: entranceIndex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4887349457918244828, guid: 4f3219b76973b44cf88ca263c509e9cb, type: 3}
       propertyPath: m_Enabled
@@ -4386,6 +4399,17 @@ PrefabInstance:
       addedObject: {fileID: 6331467634451264253}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f3219b76973b44cf88ca263c509e9cb, type: 3}
+--- !u!114 &266562673315217167 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -7461204580274333006, guid: 4f3219b76973b44cf88ca263c509e9cb, type: 3}
+  m_PrefabInstance: {fileID: 2001705594237478333}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800087004764777429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed42b0c7ac543d6a6fc38a1a06510db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Essencial::PrefabListIndexHolder
 --- !u!1 &3800087004764777429 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3421577238158167656, guid: 4f3219b76973b44cf88ca263c509e9cb, type: 3}

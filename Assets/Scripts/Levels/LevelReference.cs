@@ -5,6 +5,7 @@ public class LevelReference : MonoBehaviour
 {
     [BoxGroup("References")][Required][SerializeField] LevelManager levelManager;
     [BoxGroup("References")][Required][SerializeField] Player player;
+    [BoxGroup("References")][Required][SerializeField] SaveSystem saveSystem;
 
     public void MoveToLevel(LevelLoadInfo nextLevel)
     {
@@ -22,5 +23,10 @@ public class LevelReference : MonoBehaviour
     public Transform GetCacheParent()
     {
         return levelManager.GetLevelCacheParent();
+    }
+
+    public void SaveGame()
+    {
+        saveSystem.Save();
     }
 }

@@ -11,6 +11,7 @@ public class HealthUI : MonoBehaviour
         void Start()
         {
             characterHealth.onDamage.AddListener(UpdateHealthUI);
+            characterHealth.onHeal.AddListener(UpdateHealthUI);
             UpdateHealthUI(characterHealth.health);
         }
 

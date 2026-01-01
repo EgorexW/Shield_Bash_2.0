@@ -15,4 +15,10 @@ public class Health
         value -= damage.value;
         value = Mathf.Clamp(value, 0, maxValue);
     }
+
+    public void Heal(float amount)
+    {
+        value += amount;
+        value = Mathf.Clamp(value, 0, maxValue);
+    }
 }

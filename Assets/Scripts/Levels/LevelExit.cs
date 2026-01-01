@@ -21,5 +21,6 @@ public class LevelExit : LevelObject
 public class LevelLoadInfo
 {
     public GameObject nextLevel;
-    public LevelEntranceIndex entranceIndex;
+    [FormerlySerializedAs("levelIndex")] public int nextLevelIndex;
+    public LevelEntranceIndex entranceIndex = LevelEntranceIndex.Default;
 }

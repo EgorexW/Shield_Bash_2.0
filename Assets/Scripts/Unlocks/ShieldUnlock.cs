@@ -7,7 +7,7 @@ public class ShieldUnlock : Unlock
 
     protected override void UnlockEffect(Player player)
     {
-        var shield = player.GetShield();
+        var shield = player.Shield;
         switch (shieldUnlockType){
             case ShieldUnlockType.CanShoot:
                 shield.stats.canShoot = true;

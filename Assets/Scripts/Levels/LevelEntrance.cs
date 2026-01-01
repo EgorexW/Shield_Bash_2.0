@@ -12,6 +12,7 @@ public class LevelEntrance : MonoBehaviour
 
 public enum LevelEntranceIndex
 {
+    Default,
     Left1,
     Left2,
     Right1,
@@ -19,5 +20,6 @@ public enum LevelEntranceIndex
     Top1,
     Top2,
     Bottom1,
-    Bottom2
+    Bottom2,
+    LoadFromSave
 }

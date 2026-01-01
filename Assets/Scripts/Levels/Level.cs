@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using Nrjwolf.Tools.AttachAttributes;
 using UnityEngine;
 
 public class Level : MonoBehaviour
 {
     public LevelReference levelReference;
+     [SerializeField][GetComponent] PrefabListIndexHolder prefabListIndexHolder;
     
     public void Unload()
     {
@@ -30,6 +32,11 @@ public class Level : MonoBehaviour
     public void MoveToLevel(LevelLoadInfo loadInfo)
     {
         levelReference.MoveToLevel(loadInfo);
+    }
+    
+    public int GetPrefabListIndex()
+    {
+        return prefabListIndexHolder.prefabListIndex;
     }
 }
 

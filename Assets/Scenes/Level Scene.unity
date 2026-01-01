@@ -1792,9 +1792,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69b0cd5f7d93d49099609356af79e7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Essencial::AnimationController
-  animations:
-  - {fileID: 11400000, guid: ad03e0503cb854a95b810f147b5a104b, type: 2}
-  startAnimationOnAwake: 0
+  animationOnAwake:
+    enabled: 0
+    value: {fileID: 0}
   onNewFrame:
     m_PersistentCalls:
       m_Calls: []
@@ -1813,6 +1813,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeartUI
   animationController: {fileID: 2036972926}
+  breakAnimation: {fileID: 11400000, guid: ad03e0503cb854a95b810f147b5a104b, type: 2}
+  mergeAnimation: {fileID: 11400000, guid: ace9ca0c426d54f36a29d9e1e7f287c6, type: 2}
 --- !u!1 &2067903815
 GameObject:
   m_ObjectHideFlags: 0

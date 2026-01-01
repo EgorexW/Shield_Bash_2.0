@@ -7,14 +7,16 @@ using Object = UnityEngine.Object;
 
 public class AnimationController : MonoBehaviour
 {
-    [SerializeField] Animation[] animations;
-    [SerializeField] bool startAnimationOnAwake = true;
-    [SerializeField] UnityEvent onNewFrame;
-    Animation activeAnimation;
-
     [HideIf("@image != null")][BoxGroup("References")][Required][SerializeField] protected SpriteRenderer spriteRenderer;
     [HideIf("@spriteRenderer != null")] [BoxGroup("References")][Required][SerializeField] Image image;
 
+    [SerializeField] Optional<Animation> animationOnAwake; 
+
+    Animation activeAnimation;
+    float timePlaying;
+    
+    [FoldoutGroup("Events")] public UnityEvent onNewFrame;
+    
     public Sprite GetSprite(){
         if (spriteRenderer != null){
             return spriteRenderer.sprite;
@@ -39,8 +41,8 @@ public class AnimationController : MonoBehaviour
     
     void Awake()
     {
-        if (startAnimationOnAwake){
-            activeAnimation = animations[0];
+        if (animationOnAwake){
+            SetAnimation(animationOnAwake);
         }
     }
 
@@ -49,39 +51,24 @@ public class AnimationController : MonoBehaviour
         if (activeAnimation == null){
             return;
         }
+        timePlaying += Time.deltaTime;
         var prevSprite = GetSprite();
-        var newSprite = activeAnimation.GetNextFrame(Time.deltaTime);
+        var newSprite = activeAnimation.GetSprite(timePlaying);
         if (prevSprite != newSprite){
             onNewFrame.Invoke();
         }
         SetSprite(newSprite);
     }
 
-
-    public void SetAnimation(string animationName = null)
+    public void SetAnimation(Animation animation)
     {
-        if (activeAnimation != null && activeAnimation.name == animationName){
-            return;
-        }
-        var animation = Array.Find(animations, x => x.name == animationName);
-        if (animation == null){
-            // Debug.LogWarning("Animation" + animationName + "does not exist");
-            // return;
-            animation = animations[0];
-        }
         activeAnimation = animation;
-        activeAnimation.Restart();
+        timePlaying = 0;
     }
 
     public Animation GetAnimation()
     {
         return activeAnimation;
-    }
-
-    public Animation GetSetAnimation(string animationName)
-    {
-        SetAnimation(animationName);
-        return GetAnimation();
     }
 
     public void StopAnimation()

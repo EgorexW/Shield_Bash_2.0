@@ -14,7 +14,6 @@ public class Animation : ScriptableObject
     [HideIf("loop")] public Sprite spriteOnEnd;
 
     float cycleDuration = -10;
-    float index;
 
 #if UNITY_EDITOR
     void SetCellsDuration()
@@ -24,34 +23,18 @@ public class Animation : ScriptableObject
     }
 #endif
 
-    public void Restart()
+    public Sprite GetSprite(float timePlaying)
     {
-        if (loop){
-            return;
+        if (timePlaying > GetCycleDuration() && !loop){
+            return spriteOnEnd;
         }
-        index = 0;
-    }
-
-    public Sprite GetNextFrame(float timeSinceLastFrame)
-    {
-        index += timeSinceLastFrame;
-        var indexTmp = index;
-        Sprite frame = null;
-        foreach (var animationCell in animationCells){
-            if (indexTmp <= animationCell.duration){
-                frame = animationCell.sprite;
-                break;
-            }
-            indexTmp -= animationCell.duration;
+        timePlaying = timePlaying % GetCycleDuration();
+        int index = -1;
+        while (timePlaying > 0){
+            index++;
+            timePlaying -= animationCells[index].duration;
         }
-        if (frame == null){
-            if (loop){
-                index -= GetCycleDuration();
-                return GetNextFrame(0);
-            }
-            frame = spriteOnEnd;
-        }
-        return frame;
+        return animationCells[index].sprite;
     }
 
     public float GetCycleDuration()

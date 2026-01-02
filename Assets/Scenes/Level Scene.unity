@@ -193,6 +193,7 @@ Transform:
   - {fileID: 1732129431}
   - {fileID: 1739741112}
   - {fileID: 71541168}
+  - {fileID: 2005409219}
   m_Father: {fileID: 1220194071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &6937381
@@ -762,7 +763,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.29000536, g: 0.4401479, b: 0.46226418, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1249,6 +1250,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1263653751}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1136270302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1136270303}
+  - component: {fileID: 1136270304}
+  m_Layer: 0
+  m_Name: Cheats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1136270303
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136270302}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1610417650}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1136270304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136270302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed828ec8618304f0291c8775e1c9755e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  playerOnDie: {fileID: 2005409220}
+  dontDie: 1
 --- !u!1 &1220194070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,7 +1517,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!1 &1610417649
 GameObject:
@@ -1502,6 +1549,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 351693507}
+  - {fileID: 1136270303}
   m_Father: {fileID: 1220194071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1640287845
@@ -1703,6 +1751,50 @@ MonoBehaviour:
       pierce: 0
       damage:
         value: 1
+--- !u!1 &2005409218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2005409219}
+  - component: {fileID: 2005409220}
+  m_Layer: 0
+  m_Name: Player Effects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2005409219
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005409218}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 6937380}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2005409220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005409218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51683c1c9a47494ba3de7bd03dc6636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &2036972922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,14 +1884,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69b0cd5f7d93d49099609356af79e7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Essencial::AnimationController
+  spriteRenderer: {fileID: 0}
+  image: {fileID: 2036972924}
   animationOnAwake:
     enabled: 0
     value: {fileID: 0}
   onNewFrame:
     m_PersistentCalls:
       m_Calls: []
-  spriteRenderer: {fileID: 0}
-  image: {fileID: 2036972924}
 --- !u!114 &2036972927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1813,8 +1905,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeartUI
   animationController: {fileID: 2036972926}
-  breakAnimation: {fileID: 11400000, guid: ad03e0503cb854a95b810f147b5a104b, type: 2}
   mergeAnimation: {fileID: 11400000, guid: ace9ca0c426d54f36a29d9e1e7f287c6, type: 2}
+  breakAnimation: {fileID: 11400000, guid: ad03e0503cb854a95b810f147b5a104b, type: 2}
 --- !u!1 &2067903815
 GameObject:
   m_ObjectHideFlags: 0

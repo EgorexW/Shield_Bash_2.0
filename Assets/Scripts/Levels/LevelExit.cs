@@ -5,8 +5,16 @@ using UnityEngine.Serialization;
 
 public class LevelExit : LevelObject
 {
-    [FormerlySerializedAs("movementInfo")] [BoxGroup("References")][Required][SerializeField] LevelLoadInfo loadInfo;
+    [BoxGroup("References")] [Required] [SerializeField] new Collider2D collider;
+    [BoxGroup("References")] [Required] [SerializeField] GameObject blockedEffect;
     
+    [SerializeField] LevelLoadInfo loadInfo;
+
+    void Awake()
+    {
+        SetBlock(false);
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         var player = General.GetComponentFromCollider<Player>(other);
@@ -14,6 +22,12 @@ public class LevelExit : LevelObject
         {
             parentLevel.MoveToLevel(loadInfo);
         }
+    }
+
+    public void SetBlock(bool block)
+    {
+        collider.isTrigger = !block;
+        blockedEffect.SetActive(block);
     }
 }
 

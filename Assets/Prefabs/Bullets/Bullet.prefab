@@ -136,8 +136,8 @@ Rigidbody2D:
   m_GameObject: {fileID: 6404872819987991595}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 1
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
@@ -151,7 +151,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!70 &4628203945696928613
 CapsuleCollider2D:
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   rb: {fileID: 2032915381086575485}
-  bulletStats:
+  stats:
     speed: 20
     lifeTime: 5
     pierce: 0

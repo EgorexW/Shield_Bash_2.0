@@ -18,7 +18,7 @@ public class SaveSystem : MonoBehaviour
         foreach (SaveReferencer saveReference in saveReferencers){
             saveReference.OnSave(data);
         }
-        File.WriteAllText(GetPath(saveIndex), JsonUtility.ToJson(data));
+        File.WriteAllText(GetPath(saveIndex), JsonUtility.ToJson(data, true));
     }
 
     public void Load()

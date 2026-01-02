@@ -29,7 +29,7 @@ public class CharacterHealth : MonoBehaviour, IDamageable
             Destroy(gameObject);
             return;
         }
-        Debug.LogError("Character has died.", this);
+        BroadcastMessage("OnDeath", SendMessageOptions.RequireReceiver);
     }
 
     public void Heal(float amount = Mathf.Infinity)

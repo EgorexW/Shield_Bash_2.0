@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-
+[DefaultExecutionOrder(100)]
 public class Bullet : MonoBehaviour
 {
     [BoxGroup("References")] [Required] [SerializeField] Rigidbody2D rb;
@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
+        IgnoreGameObject(gameObject);
         deathTime = Time.time + stats.lifeTime;
     }
 
@@ -23,6 +24,11 @@ public class Bullet : MonoBehaviour
     {
         Vector2 movement = rb.transform.up;
         Vector2 move = movement * (stats.speed * Time.fixedDeltaTime);
+        // RaycastHit2D hit = Physics2D.Raycast(rb.position, move.normalized, move.magnitude);
+        // if (hit.collider != null) {
+        //     Debug.Log("Bullet hit: " + hit.collider.name, hit.collider.gameObject);
+        //     OnTriggerEnter2D(hit.collider);
+        // }
         rb.MovePosition(rb.position + move);
     }
 

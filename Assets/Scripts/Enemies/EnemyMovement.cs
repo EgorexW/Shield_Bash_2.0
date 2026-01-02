@@ -9,6 +9,9 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+        if (enemy.GetState() != EnemyState.Active){
+            return;
+        }
         var target = enemy.GetTarget();
         if (target == null){
             return;

@@ -6,7 +6,10 @@ using UnityEngine;
 public class EnemiesManager : MonoBehaviour
 {
     [BoxGroup("References")][Required][SerializeField] Level level;
-    
+
+    [SerializeField] float enemyActivationDelay = 0.5f;
+
+    float enemyActivationTime;
     List<Enemy> enemies;
 
     void Awake()
@@ -14,6 +17,18 @@ public class EnemiesManager : MonoBehaviour
         enemies = new List<Enemy>(GetComponentsInChildren<Enemy>());
         foreach (var enemy in enemies){
             enemy.manager = this;
+        }
+        enemyActivationTime = Time.time + enemyActivationDelay;
+    }
+
+    void Update()
+    {
+        if (Time.time >= enemyActivationTime)
+        {
+            foreach (var enemy in enemies){
+                enemy.SetState(EnemyState.Active);
+            }
+            enemyActivationTime = Mathf.Infinity;
         }
     }
     

@@ -12,7 +12,7 @@ public class Turret : MonoBehaviour, ICacheRequester
     public List<GameObject> teammates;
     
     [SerializeField] float cooldownTime = 1f;
-    [SerializeField] bool autoShoot;
+    [SerializeField] public bool autoShoot;
 
     [FoldoutGroup("Events")] public UnityEvent beforeShoot;
 

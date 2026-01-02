@@ -10,6 +10,12 @@ public class EnemyTurret : MonoBehaviour
     void Start()
     {
         turret.beforeShoot.AddListener(BeforeShoot);
+        enemy.onChangeState.AddListener(OnChangeState);
+    }
+
+    void OnChangeState(EnemyState arg0)
+    {
+        turret.autoShoot = arg0 == EnemyState.Active;
     }
 
     void BeforeShoot()

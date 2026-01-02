@@ -5763,7 +5763,7 @@ PrefabInstance:
       addedObject: {fileID: 8881615154400831364}
     - targetCorrespondingSourceObject: {fileID: 7080827268551457421, guid: 4f3219b76973b44cf88ca263c509e9cb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6239774326291854147}
+      addedObject: {fileID: 5161739921287775042}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f3219b76973b44cf88ca263c509e9cb, type: 3}
 --- !u!114 &266562673315217167 stripped
@@ -5877,11 +5877,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3119576600158306288, guid: 943b5a9160b144d4abab2530fe1f5cf7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.74
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3119576600158306288, guid: 943b5a9160b144d4abab2530fe1f5cf7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.6
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3119576600158306288, guid: 943b5a9160b144d4abab2530fe1f5cf7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5929,7 +5929,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3119576600158306288, guid: 943b5a9160b144d4abab2530fe1f5cf7, type: 3}
   m_PrefabInstance: {fileID: 5767742843452381300}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &9066546301544697011
+--- !u!1001 &7847761492345748658
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -5939,11 +5939,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3119576600158306288, guid: 943b5a9160b144d4abab2530fe1f5cf7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.94
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3119576600158306288, guid: 943b5a9160b144d4abab2530fe1f5cf7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.37
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3119576600158306288, guid: 943b5a9160b144d4abab2530fe1f5cf7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5986,8 +5986,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 943b5a9160b144d4abab2530fe1f5cf7, type: 3}
---- !u!4 &6239774326291854147 stripped
+--- !u!4 &5161739921287775042 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3119576600158306288, guid: 943b5a9160b144d4abab2530fe1f5cf7, type: 3}
-  m_PrefabInstance: {fileID: 9066546301544697011}
+  m_PrefabInstance: {fileID: 7847761492345748658}
   m_PrefabAsset: {fileID: 0}

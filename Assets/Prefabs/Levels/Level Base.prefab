@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelEnemies
   level: {fileID: 20229885917766207}
+  enemyActivationDelay: 0.5
 --- !u!1 &357392263956581724
 GameObject:
   m_ObjectHideFlags: 0

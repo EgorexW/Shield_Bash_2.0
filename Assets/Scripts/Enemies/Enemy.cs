@@ -47,6 +47,11 @@ public class Enemy : MonoBehaviour
     {
         return state;
     }
+
+    void OnDisable()
+    {
+        manager.EnemyDisabled(this);
+    }
 }
 
 public enum EnemyState

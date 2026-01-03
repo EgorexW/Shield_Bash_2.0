@@ -11,6 +11,7 @@ public class Cheats : MonoBehaviour
     void Awake()
     {
         if (dontDie){
+            Debug.Log("Cheat Active: Player cannot die");
             Destroy(playerOnDie);
         }
     }

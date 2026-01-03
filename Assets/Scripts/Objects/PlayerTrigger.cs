@@ -15,7 +15,7 @@ public class PlayerTrigger : MonoBehaviour
         if (player == null){
             return;
         }
-        Debug.Log("Player entered the trigger area.", this);
+        // Debug.Log("Player entered the trigger area.", this);
         onPlayerEntered.Invoke(player);
         if (removeAfterTrigger){
             Destroy(gameObject);

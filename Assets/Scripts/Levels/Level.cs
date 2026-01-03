@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using Nrjwolf.Tools.AttachAttributes;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Level : MonoBehaviour
 {
     public LevelReference levelReference;
      [SerializeField][GetComponent] PrefabListIndexHolder prefabListIndexHolder;
+     [BoxGroup("References")][Required][SerializeField] ExitsManager exitsManager;
     
     public void Unload()
     {
@@ -37,6 +39,11 @@ public class Level : MonoBehaviour
     public int GetPrefabListIndex()
     {
         return prefabListIndexHolder.prefabListIndex;
+    }
+    
+    public ExitsManager GetExitsManager()
+    {
+        return exitsManager;
     }
 }
 

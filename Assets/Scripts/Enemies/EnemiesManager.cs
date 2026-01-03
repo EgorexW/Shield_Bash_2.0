@@ -8,6 +8,7 @@ public class EnemiesManager : MonoBehaviour
     [BoxGroup("References")][Required][SerializeField] Level level;
 
     [SerializeField] float enemyActivationDelay = 0.5f;
+    [SerializeField] bool blockExits = true;
 
     float enemyActivationTime;
     List<Enemy> enemies;
@@ -15,6 +16,10 @@ public class EnemiesManager : MonoBehaviour
     void Awake()
     {
         enemies = new List<Enemy>(GetComponentsInChildren<Enemy>());
+        if (enemies.Count == 0){
+            enabled = false;
+            return;
+        }
         foreach (var enemy in enemies){
             enemy.manager = this;
         }
@@ -28,6 +33,10 @@ public class EnemiesManager : MonoBehaviour
             foreach (var enemy in enemies){
                 enemy.SetState(EnemyState.Active);
             }
+            if (blockExits)
+            {
+                level.GetExitsManager().SetBlock(true);
+            }
             enemyActivationTime = Mathf.Infinity;
         }
     }
@@ -40,5 +49,15 @@ public class EnemiesManager : MonoBehaviour
     public List<Enemy> GetTeammates()
     {
         return enemies.Copy();
+    }
+
+    public void EnemyDisabled(Enemy enemy)
+    {
+        enemies.Remove(enemy);
+        if (enemies.Count == 0 && blockExits)
+        {
+            level.GetExitsManager().SetBlock(false);
+            enabled = false;
+        }
     }
 }

@@ -143,6 +143,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   manager: {fileID: 0}
+  onChangeState:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4964408607845417399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,10 +159,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterHealth
   health:
-    value: 1
-    maxValue: 1
+    value: 2
+    maxValue: 2
   destroyOnDeath: 1
   onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onHeal:
     m_PersistentCalls:
       m_Calls: []
 --- !u!50 &2585643250758979927

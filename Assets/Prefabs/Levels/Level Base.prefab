@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelEnemies
   level: {fileID: 20229885917766207}
   enemyActivationDelay: 0.5
+  blockExits: 1
 --- !u!1 &357392263956581724
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7223847177283790002}
+  - component: {fileID: 5946774010525024181}
   m_Layer: 0
   m_Name: Exits
   m_TagString: Untagged
@@ -155,6 +157,18 @@ Transform:
   - {fileID: 5496607236204528934}
   m_Father: {fileID: 3133138930921346994}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5946774010525024181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2317950573953420100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f98703607f4534a78deea7abcc6fd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExitsManager
 --- !u!1 &3396823715695560139
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Level
   levelReference: {fileID: 0}
   prefabListIndexHolder: {fileID: -7461204580274333006}
+  exitsManager: {fileID: 5946774010525024181}
 --- !u!114 &-7461204580274333006
 MonoBehaviour:
   m_ObjectHideFlags: 0

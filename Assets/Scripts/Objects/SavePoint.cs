@@ -5,7 +5,7 @@ public class SavePoint : MonoBehaviour
 {
     [BoxGroup("References")] [Required] [SerializeField] Level level;
     [SerializeField] PlayerTrigger playerTrigger;
-    
+
     void Start()
     {
         playerTrigger?.onPlayerEntered.AddListener(Save);

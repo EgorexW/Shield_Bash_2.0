@@ -1,14 +1,18 @@
-using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Unlock : MonoBehaviour
 {
-    [BoxGroup("References")][Required][SerializeField] PlayerTrigger playerTrigger;
+    [BoxGroup("References")] [Required] [SerializeField] PlayerTrigger playerTrigger;
 
     void Awake()
     {
         playerTrigger.onPlayerEntered.AddListener(SaveUnlock);
+    }
+
+    void Reset()
+    {
+        playerTrigger = GetComponentInChildren<PlayerTrigger>();
     }
 
     void SaveUnlock(Player player)
@@ -17,13 +21,5 @@ public class Unlock : MonoBehaviour
         UnlockEffect(player);
     }
 
-    protected virtual void UnlockEffect(Player player)
-    {
-        
-    }
-
-    void Reset()
-    {
-        playerTrigger = GetComponentInChildren<PlayerTrigger>();
-    }
+    protected virtual void UnlockEffect(Player player) { }
 }

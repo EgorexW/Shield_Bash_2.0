@@ -7,15 +7,12 @@ public class CharacterHealth : MonoBehaviour, IDamageable
     [SerializeField] public Health health;
     [SerializeField] bool destroyOnDeath = true;
 
-    [FoldoutGroup("Events")]
-    public UnityEvent<Health> onDamage;
+    [FoldoutGroup("Events")] public UnityEvent<Health> onDamage;
 
-    [FoldoutGroup("Events")]
-    public UnityEvent<Health> onHeal;
+    [FoldoutGroup("Events")] public UnityEvent<Health> onHeal;
 
-    [FoldoutGroup("Events")]
-    public UnityEvent<Health> onDeath;
-    
+    [FoldoutGroup("Events")] public UnityEvent<Health> onDeath;
+
     public void TakeDamage(Damage damage)
     {
         health.Damage(damage);
@@ -31,7 +28,6 @@ public class CharacterHealth : MonoBehaviour, IDamageable
         onDeath.Invoke(health);
         if (destroyOnDeath){
             Destroy(gameObject);
-            return;
         }
         // BroadcastMessage("OnDeath", SendMessageOptions.RequireReceiver);
     }

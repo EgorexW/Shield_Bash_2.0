@@ -4,24 +4,24 @@ using UnityEngine;
 
 [RequireComponent(typeof(AnimationController))]
 public class HeartUI : MonoBehaviour
+{
+    [GetComponent] [SerializeField] AnimationController animationController;
+    [BoxGroup("References")] [Required] [SerializeField] Animation mergeAnimation;
+    [BoxGroup("References")] [Required] [SerializeField] Animation breakAnimation;
+
+    void OnObjectPoolDeactivate()
     {
-        [GetComponent][SerializeField] AnimationController animationController;
-        [BoxGroup("References")] [Required] [SerializeField] Animation mergeAnimation;
-        [BoxGroup("References")][Required][SerializeField] Animation breakAnimation;
-
-        void OnObjectPoolDeactivate()
-        {
-            animationController.SetAnimation(breakAnimation);
-        }
-
-        void OnFactoryAdd()
-        {
-            animationController.SetAnimation(mergeAnimation);
-        }
-        
-        void OnFactoryRemove()
-        {
-            animationController.SetAnimation(breakAnimation);
-            Destroy(gameObject, animationController.GetAnimation().GetCycleDuration());
-        }
+        animationController.SetAnimation(breakAnimation);
     }
+
+    void OnFactoryAdd()
+    {
+        animationController.SetAnimation(mergeAnimation);
+    }
+
+    void OnFactoryRemove()
+    {
+        animationController.SetAnimation(breakAnimation);
+        Destroy(gameObject, animationController.GetAnimation().GetCycleDuration());
+    }
+}

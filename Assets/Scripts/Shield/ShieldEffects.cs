@@ -1,4 +1,3 @@
-using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -21,7 +20,7 @@ public class ShieldEffects : MonoBehaviour
 
     void UpdateFill()
     {
-        float energyPercent = shield.Energy / shield.stats.energy;
+        var energyPercent = shield.Energy / shield.stats.energy;
         var color = shieldFill.color;
         color.a = energyPercent;
         shieldFill.color = color;

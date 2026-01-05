@@ -3,17 +3,16 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [BoxGroup("References")][Required][SerializeField] PrefabList levelsPrefabList;
+    [BoxGroup("References")] [Required] [SerializeField] PrefabList levelsPrefabList;
     [BoxGroup("References")] [Required] [SerializeField] LevelReference levelReference;
     [BoxGroup("References")] [Required] [SerializeField] Transform levelCacheParent;
-    
-    [ReadOnly][SerializeField] Level loadedLevel;
-    
+
+    [ReadOnly] [SerializeField] Level loadedLevel;
+
     [Button("Load Level")]
     public void LoadLevel(LevelLoadInfo levelInfo)
     {
-        if (loadedLevel != null)
-        {
+        if (loadedLevel != null){
             UnloadLevel();
         }
         if (levelInfo.nextLevel == null){
@@ -30,9 +29,7 @@ public class LevelManager : MonoBehaviour
             return;
         }
         loadedLevel.Unload();
-        foreach (Transform child in levelCacheParent){
-            Destroy(child.gameObject);
-        }
+        foreach (Transform child in levelCacheParent) Destroy(child.gameObject);
         loadedLevel = null;
     }
 

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -8,15 +7,19 @@ using UnityEngine.Serialization;
 public class Enemy : MonoBehaviour
 {
     [FormerlySerializedAs("level")] [BoxGroup("References")] public EnemiesManager manager;
-    EnemyState state = EnemyState.Inactive;
     [FoldoutGroup("Events")] public UnityEvent<EnemyState> onChangeState;
+    EnemyState state = EnemyState.Inactive;
 
     void Start()
     {
-        if (manager == null)
-        {
+        if (manager == null){
             Debug.LogError("Level reference is not set for Enemy: " + gameObject.name, this);
         }
+    }
+
+    void OnDisable()
+    {
+        manager.EnemyDisabled(this);
     }
 
     public Transform GetTarget()
@@ -47,15 +50,10 @@ public class Enemy : MonoBehaviour
     {
         return state;
     }
-
-    void OnDisable()
-    {
-        manager.EnemyDisabled(this);
-    }
 }
 
 public enum EnemyState
 {
     Inactive,
-    Active,
+    Active
 }

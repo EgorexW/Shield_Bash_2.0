@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class Turret : MonoBehaviour, ICacheRequester
 {
-    [BoxGroup("References")][Required][SerializeField] Transform shootPoint;
-    
+    [BoxGroup("References")] [Required] [SerializeField] Transform shootPoint;
+
     public List<GameObject> teammates;
-    
+
     [SerializeField] public bool autoShoot;
 
     public TurretStats stats;
 
     [FoldoutGroup("Events")] public UnityEvent beforeShoot;
+    Transform cacheParent;
 
     float nextShootTime;
-    Transform cacheParent;
 
     void Awake()
     {
@@ -33,7 +34,7 @@ public class Turret : MonoBehaviour, ICacheRequester
         if (Time.time > nextShootTime){
             return;
         }
-        for (int i = 0; i < General.Iterationlimit; i++){
+        for (var i = 0; i < General.Iterationlimit; i++){
             if (!autoShoot){
                 break;
             }
@@ -41,20 +42,25 @@ public class Turret : MonoBehaviour, ICacheRequester
         }
     }
 
+    public void SetCacheParent(Transform parent)
+    {
+        cacheParent = parent;
+    }
+
     public void Shoot()
     {
-        if (Time.time < nextShootTime)
-        {
+        if (Time.time < nextShootTime){
             return;
         }
-        
+
         beforeShoot.Invoke();
 
         var targetRotation = shootPoint.rotation;
-        var spreadAngle = UnityEngine.Random.Range(-stats.spread / 2f, stats.spread / 2f);
+        var spreadAngle = Random.Range(-stats.spread / 2f, stats.spread / 2f);
         targetRotation = targetRotation * Quaternion.Euler(0f, 0f, spreadAngle);
-        
-        var bullet = Instantiate(stats.bulletPrefab, shootPoint.position, targetRotation, cacheParent).GetComponent<Bullet>();
+
+        var bullet = Instantiate(stats.bulletPrefab, shootPoint.position, targetRotation, cacheParent)
+            .GetComponent<Bullet>();
         if (stats.bulletStats){
             bullet.stats = stats.bulletStats;
         }
@@ -62,18 +68,16 @@ public class Turret : MonoBehaviour, ICacheRequester
         bullet.IgnoreGameObjects(teammates);
         nextShootTime = Time.time + stats.cooldownTime;
     }
-
-    public void SetCacheParent(Transform parent)
-    {
-        cacheParent = parent;
-    }
 }
 
-[Serializable][BoxGroup("Turret Stats")][InlineProperty][HideLabel]
+[Serializable]
+[BoxGroup("Turret Stats")]
+[InlineProperty]
+[HideLabel]
 public class TurretStats
 {
     [Required] public GameObject bulletPrefab;
     public float cooldownTime = 1f;
-    public float spread = 0f;
-    public Optional<BulletStats> bulletStats = new Optional<BulletStats>();
+    public float spread;
+    public Optional<BulletStats> bulletStats;
 }

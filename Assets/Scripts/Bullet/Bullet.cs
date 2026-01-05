@@ -10,8 +10,8 @@ public class Bullet : MonoBehaviour
     [BoxGroup("References")] [Required] [SerializeField] Rigidbody2D rb;
 
     [FormerlySerializedAs("bulletStats")] [SerializeField] public BulletStats stats;
-    
-    List<GameObject> ignoreObjects = new();
+
+    readonly List<GameObject> ignoreObjects = new();
     float deathTime;
 
     void Start()
@@ -20,10 +20,17 @@ public class Bullet : MonoBehaviour
         deathTime = Time.time + stats.lifeTime;
     }
 
+    void Update()
+    {
+        if (Time.time >= deathTime){
+            Destroy();
+        }
+    }
+
     void FixedUpdate()
     {
         Vector2 movement = rb.transform.up;
-        Vector2 move = movement * (stats.speed * Time.fixedDeltaTime);
+        var move = movement * (stats.speed * Time.fixedDeltaTime);
         // RaycastHit2D hit = Physics2D.Raycast(rb.position, move.normalized, move.magnitude);
         // if (hit.collider != null) {
         //     Debug.Log("Bullet hit: " + hit.collider.name, hit.collider.gameObject);
@@ -32,23 +39,13 @@ public class Bullet : MonoBehaviour
         rb.MovePosition(rb.position + move);
     }
 
-    void Update()
-    {
-        if (Time.time >= deathTime)
-        {
-            Destroy();
-        }
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (ignoreObjects.Contains(other.gameObject))
-        {
+        if (ignoreObjects.Contains(other.gameObject)){
             return;
         }
         var damageable = other.GetComponent<IDamageable>();
-        if (damageable != null)
-        {
+        if (damageable != null){
             damageable.TakeDamage(stats.damage);
         }
         if (stats.pierce){
@@ -73,11 +70,14 @@ public class Bullet : MonoBehaviour
     }
 }
 
-[Serializable][BoxGroup("Bullet Stats")][InlineProperty][HideLabel]
+[Serializable]
+[BoxGroup("Bullet Stats")]
+[InlineProperty]
+[HideLabel]
 public class BulletStats
 {
     public float speed = 10f;
     public float lifeTime = 5f;
-    public bool pierce = false;
-    public Damage damage = new Damage();
+    public bool pierce;
+    public Damage damage = new();
 }

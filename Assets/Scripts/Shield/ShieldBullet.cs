@@ -3,5 +3,5 @@ using UnityEngine;
 
 public class ShieldBullet : MonoBehaviour
 {
-    [BoxGroup("References")][Required] public SpriteRenderer shieldFill;
+    [BoxGroup("References")] [Required] public SpriteRenderer shieldFill;
 }

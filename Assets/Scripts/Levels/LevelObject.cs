@@ -7,5 +7,5 @@ public class LevelObject : MonoBehaviour, ILevelObject
 
 public interface ILevelObject
 {
-    public Level parentLevel { set; }
+    public Level parentLevel{ set; }
 }

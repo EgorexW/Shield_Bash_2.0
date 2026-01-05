@@ -1,28 +1,33 @@
-using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class EnemyBehaviours : MonoBehaviour
 {
-    [BoxGroup("References")][Required][SerializeField] Enemy enemy;
-    
+    [BoxGroup("References")] [Required] [SerializeField] Enemy enemy;
+
     [SerializeField] List<ObjectWithValue<EnemyBehaviour>> behaviours;
-    
-    EnemyBehaviour previousBehaviour;
     EnemyBehaviour activeBehaviour;
-    
+
     float nextBehaviourTime = Mathf.Infinity;
+
+    EnemyBehaviour previousBehaviour;
 
     void Awake()
     {
         enemy.onChangeState.AddListener(OnChangeState);
     }
 
+    void Reset()
+    {
+        behaviours = new List<ObjectWithValue<EnemyBehaviour>>();
+        foreach (var behaviour in GetComponents<EnemyBehaviour>())
+            behaviours.Add(new ObjectWithValue<EnemyBehaviour>(1f, behaviour));
+    }
+
     void Update()
     {
-        if (Time.time >= nextBehaviourTime)
-        {
+        if (Time.time >= nextBehaviourTime){
             StartBehaviour();
         }
     }
@@ -64,15 +69,6 @@ public class EnemyBehaviours : MonoBehaviour
         }
         var behaviour = behavioursTmp.GetWeightedRoll();
         return behaviour;
-    }
-    
-    void Reset()
-    {
-        behaviours = new List<ObjectWithValue<EnemyBehaviour>>();
-        foreach (EnemyBehaviour behaviour in GetComponents<EnemyBehaviour>())
-        {
-            behaviours.Add(new ObjectWithValue<EnemyBehaviour>(1f, behaviour));
-        }
     }
 
     public void BehaviourEnded(EnemyBehaviour enemyBehaviour)

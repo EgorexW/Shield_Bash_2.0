@@ -7,6 +7,7 @@ public class SaveData
     public AbilitiesData abilitiesData;
     public LevelData levelData;
 }
+
 [Serializable]
 public class LevelData
 {
@@ -16,7 +17,7 @@ public class LevelData
 [Serializable]
 public class AbilitiesData
 {
-    public bool pierce = false;
-    public bool canShoot = false;
-    public bool canBlock = false;
+    public bool pierce;
+    public bool canShoot;
+    public bool canBlock;
 }

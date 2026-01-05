@@ -2,17 +2,16 @@ using Nrjwolf.Tools.AttachAttributes;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(PlayerInput))]
 public class InputHandler : MonoBehaviour
 {
-    [GetComponent][SerializeField] PlayerInput playerInput;
-    
-    [BoxGroup("References")][Required][SerializeField] CharacterMovement characterMovement;
-    [BoxGroup("References")][Required][SerializeField] Shield shieldInput;
-    
-    private void Awake()
+    [GetComponent] [SerializeField] PlayerInput playerInput;
+
+    [BoxGroup("References")] [Required] [SerializeField] CharacterMovement characterMovement;
+    [BoxGroup("References")] [Required] [SerializeField] Shield shieldInput;
+
+    void Awake()
     {
         playerInput.onActionTriggered += OnActionTriggered;
     }
@@ -42,26 +41,24 @@ public class InputHandler : MonoBehaviour
     {
         var isPressed = obj.ReadValue<float>();
         // Debug.Log("Shield input: " + isPressed);
-        if (isPressed > 0.5f)
-        {
+        if (isPressed > 0.5f){
             shieldInput.Raise();
         }
-        else
-        {
+        else{
             shieldInput.Release();
         }
     }
 
     void OnTargetPerformed(InputAction.CallbackContext obj)
     {
-        Vector2 lookPoint = obj.ReadValue<Vector2>();
+        var lookPoint = obj.ReadValue<Vector2>();
         lookPoint = General.GetMouseWorldPos(lookPoint);
         characterMovement.SetTarget(lookPoint);
     }
 
     void OnMovePerformed(InputAction.CallbackContext obj)
     {
-        Vector2 inputVector = obj.ReadValue<Vector2>();
+        var inputVector = obj.ReadValue<Vector2>();
         characterMovement.SetMovementInput(inputVector);
     }
 }

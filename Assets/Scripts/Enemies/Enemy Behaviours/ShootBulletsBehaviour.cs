@@ -1,16 +1,15 @@
-using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class ShootBulletsBehaviour : EnemyBehaviour
 {
-    [BoxGroup("References")][Required][SerializeField] EnemyControlTurret turretControl;
+    [BoxGroup("References")] [Required] [SerializeField] EnemyControlTurret turretControl;
     [SerializeField] TurretStats stats;
     [SerializeField] float bulletsNr;
-    [SerializeField] float windUp = 0f;
+    [SerializeField] float windUp;
 
     float startShootingTime = Mathf.Infinity;
-    
+
     void Awake()
     {
         turretControl.onRunOutOfBullets.AddListener(BulletsEnded);
@@ -52,6 +51,4 @@ public class ShootBulletsBehaviour : EnemyBehaviour
         base.EndBehaviour();
         turretControl.StopShooting();
     }
-    
-    
 }

@@ -1,11 +1,9 @@
-using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class EnemyForwardMovement : MonoBehaviour, IEnemyMovementProvider
 {
-    [BoxGroup("References")][Required][SerializeField] Enemy enemy;
+    [BoxGroup("References")] [Required] [SerializeField] Enemy enemy;
     [BoxGroup("References")] [Required] [SerializeField] EnemyMovementHandler movementHandler;
 
     void Awake()

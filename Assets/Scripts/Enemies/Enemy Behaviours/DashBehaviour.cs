@@ -1,6 +1,1 @@
-using UnityEngine;
-
-public class DashBehaviour : EnemyBehaviour
-{
-    
-}
+public class DashBehaviour : EnemyBehaviour { }

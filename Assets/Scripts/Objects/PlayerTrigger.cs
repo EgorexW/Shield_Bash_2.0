@@ -1,14 +1,13 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider2D))]
 public class PlayerTrigger : MonoBehaviour
 {
-    [SerializeField] bool removeAfterTrigger = false;
-    
+    [SerializeField] bool removeAfterTrigger;
+
     public UnityEvent<Player> onPlayerEntered;
-    
+
     void OnTriggerEnter2D(Collider2D other)
     {
         var player = other.GetComponent<Player>();

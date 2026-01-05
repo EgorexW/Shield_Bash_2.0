@@ -1,15 +1,13 @@
-using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class EnemyMantainDistanceMovement : MonoBehaviour, IEnemyMovementProvider
 {
-    [BoxGroup("References")][Required][SerializeField] Enemy enemy;
+    [BoxGroup("References")] [Required] [SerializeField] Enemy enemy;
     [BoxGroup("References")] [Required] [SerializeField] EnemyMovementHandler movementHandler;
-    
-    [SerializeField] Vector2 mantainDistance = new Vector2(7f, 10f);
+
+    [SerializeField] Vector2 mantainDistance = new(7f, 10f);
     [SerializeField] float changeDirChance = 1f;
 
     void Awake()

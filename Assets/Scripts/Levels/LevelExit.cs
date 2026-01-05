@@ -7,7 +7,7 @@ public class LevelExit : LevelObject
 {
     [BoxGroup("References")] [Required] [SerializeField] new Collider2D collider;
     [BoxGroup("References")] [Required] [SerializeField] GameObject blockedEffect;
-    
+
     [SerializeField] LevelLoadInfo loadInfo;
 
     void Awake()
@@ -18,8 +18,7 @@ public class LevelExit : LevelObject
     void OnTriggerEnter2D(Collider2D other)
     {
         var player = General.GetComponentFromCollider<Player>(other);
-        if (player != null)
-        {
+        if (player != null){
             parentLevel.MoveToLevel(loadInfo);
         }
     }
@@ -35,6 +34,6 @@ public class LevelExit : LevelObject
 public class LevelLoadInfo
 {
     public GameObject nextLevel;
-    [FormerlySerializedAs("levelIndex")][HideIf("@nextLevel != null")] public int nextLevelIndex;
+    [FormerlySerializedAs("levelIndex")] [HideIf("@nextLevel != null")] public int nextLevelIndex;
     public LevelEntranceIndex entranceIndex = LevelEntranceIndex.Default;
 }

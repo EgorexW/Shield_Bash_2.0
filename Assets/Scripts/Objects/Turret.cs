@@ -26,7 +26,17 @@ public class Turret : MonoBehaviour, ICacheRequester
 
     public void Update()
     {
-        if (autoShoot){
+        if (!autoShoot){
+            return;
+        }
+        Shoot();
+        if (Time.time > nextShootTime){
+            return;
+        }
+        for (int i = 0; i < General.Iterationlimit; i++){
+            if (!autoShoot){
+                break;
+            }
             Shoot();
         }
     }
@@ -38,7 +48,7 @@ public class Turret : MonoBehaviour, ICacheRequester
             return;
         }
         
-        beforeShoot?.Invoke();
+        beforeShoot.Invoke();
 
         var targetRotation = shootPoint.rotation;
         var spreadAngle = UnityEngine.Random.Range(-stats.spread / 2f, stats.spread / 2f);

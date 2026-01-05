@@ -1,13 +1,21 @@
+using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
-public class EnemyMantainDistanceMovement : MonoBehaviour
+public class EnemyMantainDistanceMovement : MonoBehaviour, IEnemyMovementProvider
 {
     [BoxGroup("References")][Required][SerializeField] Enemy enemy;
-    [BoxGroup("References")] [Required] [SerializeField] CharacterMovement characterMovement;
+    [BoxGroup("References")] [Required] [SerializeField] EnemyMovementHandler movementHandler;
     
     [SerializeField] Vector2 mantainDistance = new Vector2(7f, 10f);
     [SerializeField] float changeDirChance = 1f;
+
+    void Awake()
+    {
+        movementHandler.Register(this);
+    }
 
     void Update()
     {
@@ -18,19 +26,19 @@ public class EnemyMantainDistanceMovement : MonoBehaviour
         if (target == null){
             return;
         }
-        characterMovement.SetTarget(target.position);
+        movementHandler.SetTarget(target.position, this);
         Vector2 dir = target.position - transform.position;
         if (dir.sqrMagnitude < mantainDistance.x * mantainDistance.x){
             var targetDir = -dir.normalized;
-            characterMovement.SetMovementInput(targetDir);
+            movementHandler.SetMovementInput(targetDir, this);
             return;
         }
         if (dir.sqrMagnitude > mantainDistance.y * mantainDistance.y){
-            characterMovement.SetMovementInput(dir);
+            movementHandler.SetMovementInput(dir, this);
             return;
         }
         if (Random.value < changeDirChance * Time.deltaTime){
-            characterMovement.SetMovementInput(General.RandomPointOnCircle());
+            movementHandler.SetMovementInput(General.RandomPointOnCircle(), this);
         }
     }
 }

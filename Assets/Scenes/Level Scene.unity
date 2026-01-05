@@ -1828,8 +1828,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 9078732283728683824, guid: 5e17e412b5deb47269bacc889b28f77b, type: 3}
   shieldHealth: {fileID: 1389051081}
   stats:
-    raiseTime: 0.5
-    hideTime: 0.2
+    raiseTime: 0.2
+    hideTime: 0.3
+    cooldownTime: 0.3
     energy: 5
     energyGainRate: 2
     minEnergyToRaise: 1

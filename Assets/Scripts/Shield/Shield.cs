@@ -19,6 +19,7 @@ public class Shield : MonoBehaviour
     [SerializeField] public ShieldStats stats;
 
     float energy;
+    float cooldownEndTime;
 
     public float Energy => energy;
 
@@ -43,15 +44,18 @@ public class Shield : MonoBehaviour
         shieldHealth.onDeath.AddListener(OnDeath);
     }
 
-    void OnDeath(Health arg0)
+    void OnDeath(Health health)
     {
         Hide();
         energy = 0;
     }
 
-    void OnDamage(Health arg0)
+    void OnDamage(Health health)
     {
         energy = shieldHealth.health.value;
+        if (energy < stats.minEnergyToRaise){
+            OnDeath(health);
+        }
         onDamage.Invoke();
     }
 
@@ -81,6 +85,17 @@ public class Shield : MonoBehaviour
             case ShieldState.Releasing:
                 UpdateReleasing();
                 break;
+            case ShieldState.OnCooldown:
+                UpdateOnCooldown();
+                break;
+        }
+    }
+
+    void UpdateOnCooldown()
+    {
+        if (Time.time >= cooldownEndTime)
+        {
+            state = ShieldState.Idle;
         }
     }
 
@@ -119,8 +134,9 @@ public class Shield : MonoBehaviour
         bullet.stats = stats.bulletStats;
         bullet.IgnoreGameObject(player.gameObject);
         onShoot.Invoke(bullet);
-        Release();
         Hide();
+        cooldownEndTime = stats.cooldownTime + Time.time;
+        state = ShieldState.OnCooldown;
     }
 
     void UpdateRaising()
@@ -162,6 +178,7 @@ public class ShieldStats
 {
     [BoxGroup("Values")] public float raiseTime = 0.5f;
     [BoxGroup("Values")] public float hideTime = 0.5f;
+    [BoxGroup("Values")] public float cooldownTime = 0.5f;
     [BoxGroup("Values")] public float energy = 5f;
     [BoxGroup("Values")] public float energyGainRate = 2f;
     [BoxGroup("Values")] public float minEnergyToRaise = 1f;
@@ -177,5 +194,6 @@ enum ShieldState
     Idle,
     Raising,
     Raised,
-    Releasing
+    Releasing,
+    OnCooldown
 }

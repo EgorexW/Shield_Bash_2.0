@@ -106,6 +106,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   duration: 1
   targetScale: {x: 1, y: 1, z: 1}
+--- !u!1 &752328247983740767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4932487063813358741}
+  - component: {fileID: 1135121964422382674}
+  m_Layer: 0
+  m_Name: Dash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4932487063813358741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752328247983740767}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 4952877787126839797}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1135121964422382674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752328247983740767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa81737b87f884fdf873209bd13a0b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  enemyBehaviours: {fileID: 0}
+  cooldown: 1
+  canRepeat: 0
+  onStartBehaviour:
+    m_PersistentCalls:
+      m_Calls: []
+  onEndBehaviour:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2152954086821198457
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +190,7 @@ Transform:
   m_Children:
   - {fileID: 6892979617740084571}
   - {fileID: 5361623477972394934}
+  - {fileID: 4932487063813358741}
   m_Father: {fileID: 5957176803808012453}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2154285719406471826
@@ -156,6 +210,7 @@ GameObject:
   - component: {fileID: 3341713846459084809}
   - component: {fileID: 1596432494591117055}
   - component: {fileID: 2216222969275239594}
+  - component: {fileID: 4322834540971105693}
   m_Layer: 0
   m_Name: The Knight
   m_TagString: Untagged
@@ -347,9 +402,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   enemy: {fileID: 2493816179325244925}
-  characterMovement: {fileID: 4883868151176298585}
+  movementHandler: {fileID: 4322834540971105693}
   mantainDistance: {x: 7, y: 15}
   changeDirChance: 1
+--- !u!114 &4322834540971105693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2154285719406471826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c9cc69f6c98492cbcc2a720a40fed77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AdvancedMovementHandler
+  characterMovement: {fileID: 4883868151176298585}
 --- !u!1 &3895978810260065267
 GameObject:
   m_ObjectHideFlags: 0

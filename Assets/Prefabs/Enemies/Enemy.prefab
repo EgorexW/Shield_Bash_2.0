@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 4188399240333432588}
   - component: {fileID: 3052391859904764375}
   - component: {fileID: 6306998635939800924}
+  - component: {fileID: 5210146858373492638}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -166,6 +167,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
     m_PersistentCalls:
       m_Calls: []
 --- !u!50 &2585643250758979927
@@ -258,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   enemy: {fileID: 6592427920737665704}
-  characterMovement: {fileID: 4188399240333432588}
+  movementHandler: {fileID: 5210146858373492638}
 --- !u!114 &6306998635939800924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,3 +280,16 @@ MonoBehaviour:
     value: 1
   onlyTargets: 1
   cooldown: 1
+--- !u!114 &5210146858373492638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7206706824199372231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e4cdb82eab845fe960301dc4c4b0f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleMovementHandler
+  characterMovement: {fileID: 4188399240333432588}

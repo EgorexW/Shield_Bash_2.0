@@ -1,11 +1,17 @@
 using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class EnemyForwardMovement : MonoBehaviour
+public class EnemyForwardMovement : MonoBehaviour, IEnemyMovementProvider
 {
     [BoxGroup("References")][Required][SerializeField] Enemy enemy;
-    [BoxGroup("References")] [Required] [SerializeField] CharacterMovement characterMovement;
+    [BoxGroup("References")] [Required] [SerializeField] EnemyMovementHandler movementHandler;
+
+    void Awake()
+    {
+        movementHandler.Register(this);
+    }
 
     void Update()
     {
@@ -16,8 +22,8 @@ public class EnemyForwardMovement : MonoBehaviour
         if (target == null){
             return;
         }
-        characterMovement.SetTarget(target.position);
+        movementHandler.SetTarget(target.position, this);
         Vector2 targetDir = (target.position - transform.position).normalized;
-        characterMovement.SetMovementInput(targetDir);
+        movementHandler.SetMovementInput(targetDir, this);
     }
 }

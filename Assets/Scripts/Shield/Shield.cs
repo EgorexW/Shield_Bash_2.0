@@ -1,6 +1,8 @@
 using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class Shield : MonoBehaviour
 {
@@ -12,13 +14,45 @@ public class Shield : MonoBehaviour
     [BoxGroup("References")][Required][SerializeField] Transform shieldTransform;
     [BoxGroup("References")][Required][SerializeField] Collider2D shieldCollider;
     [BoxGroup("References")][Required][SerializeField] GameObject bulletPrefab;
+    [BoxGroup("References")][Required][SerializeField] CharacterHealth shieldHealth;
     
     [SerializeField] public ShieldStats stats;
+
+    float energy;
+
+    public float Energy => energy;
+
+    [FormerlySerializedAs("onRaise")] [FoldoutGroup("Events")]
+    public UnityEvent onRaised;
+
+    [FoldoutGroup("Events")]
+    public UnityEvent onDamage;
+
+    [FoldoutGroup("Events")]
+    public UnityEvent onStartRaising;
+
+    [FoldoutGroup("Events")] public UnityEvent<Bullet> onShoot;
 
 
     void Awake()
     {
         Hide();
+        shieldHealth.health.maxValue = stats.energy;
+        energy = stats.energy;
+        shieldHealth.onDamage.AddListener(OnDamage);
+        shieldHealth.onDeath.AddListener(OnDeath);
+    }
+
+    void OnDeath(Health arg0)
+    {
+        Hide();
+        energy = 0;
+    }
+
+    void OnDamage(Health arg0)
+    {
+        energy = shieldHealth.health.value;
+        onDamage.Invoke();
     }
 
     public void Raise()
@@ -84,6 +118,7 @@ public class Shield : MonoBehaviour
         var bullet = Instantiate(bulletPrefab, shieldTransform.position, shieldTransform.rotation, player.GetCacheParent()).GetComponent<Bullet>();
         bullet.stats = stats.bulletStats;
         bullet.IgnoreGameObject(player.gameObject);
+        onShoot.Invoke(bullet);
         Release();
         Hide();
     }
@@ -100,6 +135,8 @@ public class Shield : MonoBehaviour
 
     void Raised()
     {
+        onRaised.Invoke();
+        shieldHealth.health.value = energy;
         shieldTransform.localScale = new Vector3(1f, 1f, 1f);
         state = ShieldState.Raised;
         shieldCollider.enabled = true;
@@ -107,10 +144,16 @@ public class Shield : MonoBehaviour
 
     void UpdateIdle()
     {
-        if (held)
-        {
-            state = ShieldState.Raising;
+        energy += stats.energyGainRate * Time.deltaTime;
+        energy = Mathf.Min(energy, stats.energy);
+        if (!held){
+            return;
         }
+        if (energy < stats.minEnergyToRaise){
+            return;
+        }
+        state = ShieldState.Raising;
+        onStartRaising.Invoke();
     }
 }
 
@@ -119,6 +162,9 @@ public class ShieldStats
 {
     [BoxGroup("Values")] public float raiseTime = 0.5f;
     [BoxGroup("Values")] public float hideTime = 0.5f;
+    [BoxGroup("Values")] public float energy = 5f;
+    [BoxGroup("Values")] public float energyGainRate = 2f;
+    [BoxGroup("Values")] public float minEnergyToRaise = 1f;
 
     [BoxGroup("Abilities")] public bool canBlock;
     [BoxGroup("Abilities")] public bool canShoot;

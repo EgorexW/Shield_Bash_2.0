@@ -35,6 +35,6 @@ public class LevelExit : LevelObject
 public class LevelLoadInfo
 {
     public GameObject nextLevel;
-    [FormerlySerializedAs("levelIndex")] public int nextLevelIndex;
+    [FormerlySerializedAs("levelIndex")][HideIf("@nextLevel != null")] public int nextLevelIndex;
     public LevelEntranceIndex entranceIndex = LevelEntranceIndex.Default;
 }

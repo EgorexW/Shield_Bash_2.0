@@ -2,7 +2,7 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyForwardMovement : MonoBehaviour
 {
     [BoxGroup("References")][Required][SerializeField] Enemy enemy;
     [BoxGroup("References")] [Required] [SerializeField] CharacterMovement characterMovement;

@@ -12,6 +12,9 @@ public class CharacterHealth : MonoBehaviour, IDamageable
 
     [FoldoutGroup("Events")]
     public UnityEvent<Health> onHeal;
+
+    [FoldoutGroup("Events")]
+    public UnityEvent<Health> onDeath;
     
     public void TakeDamage(Damage damage)
     {
@@ -25,11 +28,12 @@ public class CharacterHealth : MonoBehaviour, IDamageable
 
     void Die()
     {
+        onDeath.Invoke(health);
         if (destroyOnDeath){
             Destroy(gameObject);
             return;
         }
-        BroadcastMessage("OnDeath", SendMessageOptions.RequireReceiver);
+        // BroadcastMessage("OnDeath", SendMessageOptions.RequireReceiver);
     }
 
     public void Heal(float amount = Mathf.Infinity)

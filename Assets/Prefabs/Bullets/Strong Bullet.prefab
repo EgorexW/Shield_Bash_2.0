@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2572695976702169712, guid: b0c3ec090c439463dac27fe69600f3d4, type: 3}
       propertyPath: stats.damage.value
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3389074347925065610, guid: b0c3ec090c439463dac27fe69600f3d4, type: 3}
       propertyPath: m_LocalPosition.x

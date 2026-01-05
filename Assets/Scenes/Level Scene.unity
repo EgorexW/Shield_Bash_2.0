@@ -260,6 +260,9 @@ MonoBehaviour:
   onHeal:
     m_PersistentCalls:
       m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &71541167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,7 +1299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   playerOnDie: {fileID: 2005409220}
-  dontDie: 1
+  dontDie: 0
 --- !u!1 &1220194070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,7 +1480,7 @@ GameObject:
   - component: {fileID: 1389051077}
   - component: {fileID: 1389051078}
   - component: {fileID: 1389051080}
-  - component: {fileID: 1389051079}
+  - component: {fileID: 1389051081}
   m_Layer: 0
   m_Name: Object
   m_TagString: Untagged
@@ -1547,18 +1550,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3, y: 0.25}
   m_EdgeRadius: 0
---- !u!114 &1389051079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389051076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bbaf8f1155cf4e619349cd4cb40fb98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!50 &1389051080
 Rigidbody2D:
   serializedVersion: 5
@@ -1586,6 +1577,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &1389051081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389051076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e985feee22258426ab2f7c55b9d1bdff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterHealth
+  health:
+    value: 5
+    maxValue: 5
+  destroyOnDeath: 0
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1610417649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,6 +1784,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1739741112}
   - component: {fileID: 1739741113}
+  - component: {fileID: 1739741114}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -1809,9 +1826,13 @@ MonoBehaviour:
   shieldTransform: {fileID: 1389051077}
   shieldCollider: {fileID: 1389051078}
   bulletPrefab: {fileID: 9078732283728683824, guid: 5e17e412b5deb47269bacc889b28f77b, type: 3}
+  shieldHealth: {fileID: 1389051081}
   stats:
     raiseTime: 0.5
     hideTime: 0.2
+    energy: 5
+    energyGainRate: 2
+    minEnergyToRaise: 1
     canBlock: 0
     canShoot: 1
     bulletStats:
@@ -1820,6 +1841,32 @@ MonoBehaviour:
       pierce: 0
       damage:
         value: 1
+  onRaised:
+    m_PersistentCalls:
+      m_Calls: []
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onStartRaising:
+    m_PersistentCalls:
+      m_Calls: []
+  onShoot:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1739741114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739741111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21dbcea6dc0e84ae6843faddabe7a810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  shield: {fileID: 1739741113}
+  shieldFill: {fileID: 1640287847}
 --- !u!1 &2005409218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1864,6 +1911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51683c1c9a47494ba3de7bd03dc6636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  playerHealth: {fileID: 6937384}
 --- !u!1 &2036972922
 GameObject:
   m_ObjectHideFlags: 0

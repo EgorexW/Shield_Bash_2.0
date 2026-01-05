@@ -52,6 +52,14 @@ public class Enemy : MonoBehaviour
     }
 }
 
+public static class EnemyExtensions
+{
+    public static Vector3 GetTargetPosition(this Enemy enemy)
+    {
+        return enemy.GetTarget().transform.position;
+    }
+}
+
 public enum EnemyState
 {
     Inactive,

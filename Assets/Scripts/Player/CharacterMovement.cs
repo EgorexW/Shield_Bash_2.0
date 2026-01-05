@@ -5,7 +5,8 @@ class CharacterMovement : MonoBehaviour
 {
     [BoxGroup("References")] [Required] [SerializeField] Rigidbody2D rb;
 
-    [SerializeField] float speed = 5f;
+    public float speed = 5f;
+    
     Vector2 lookPoint;
 
     Vector2 movement;

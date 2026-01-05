@@ -152,13 +152,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   enemyBehaviours: {fileID: 0}
   cooldown: 1
-  canRepeat: 0
+  canRepeat: 1
   onStartBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onEndBehaviour:
     m_PersistentCalls:
       m_Calls: []
+  movementHandler: {fileID: 4322834540971105693}
+  enemy: {fileID: 2493816179325244925}
+  speed: 15
+  maxDistance: 15
 --- !u!1 &2152954086821198457
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,6 +393,8 @@ MonoBehaviour:
     Object: {fileID: 2754096720887374250}
   - value: 1
     Object: {fileID: 5666428637166602576}
+  - value: 1
+    Object: {fileID: 1135121964422382674}
 --- !u!114 &2216222969275239594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,6 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AdvancedMovementHandler
   characterMovement: {fileID: 4883868151176298585}
+  defaultSpeed: -1
 --- !u!1 &3895978810260065267
 GameObject:
   m_ObjectHideFlags: 0

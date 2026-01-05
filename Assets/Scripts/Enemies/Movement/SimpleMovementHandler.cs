@@ -16,4 +16,10 @@ public class SimpleMovementHandler : EnemyMovementHandler
     {
         characterMovement.SetMovementInput(targetDir);
     }
+
+    public override void SetMovementInputAndSpeed(Vector2 targetDir, float speed, IEnemyMovementProvider provider)
+    {
+        SetMovementInput(targetDir, provider);
+        characterMovement.speed = speed;
+    }
 }

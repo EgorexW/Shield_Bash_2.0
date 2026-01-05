@@ -16,6 +16,7 @@ public abstract class EnemyMovementHandler : MonoBehaviour
     public abstract void SetTarget(Vector3 targetPosition, IEnemyMovementProvider provider);
 
     public abstract void SetMovementInput(Vector2 targetDir, IEnemyMovementProvider provider);
+    public abstract void SetMovementInputAndSpeed(Vector2 targetDir, float speed, IEnemyMovementProvider provider);
 }
 
 public interface IEnemyMovementProvider

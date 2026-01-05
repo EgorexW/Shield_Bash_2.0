@@ -77,6 +77,7 @@ public class EnemyBehaviours : MonoBehaviour
             Debug.LogError("Enemy behaviour ended that is not active!", this);
             return;
         }
+        EndBehaviour();
         if (enemy.GetState() != EnemyState.Active){
             return;
         }

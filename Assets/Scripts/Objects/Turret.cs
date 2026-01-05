@@ -6,13 +6,13 @@ using UnityEngine.Events;
 
 public class Turret : MonoBehaviour, ICacheRequester
 {
-    [BoxGroup("References")][Required][SerializeField] GameObject bulletPrefab;
     [BoxGroup("References")][Required][SerializeField] Transform shootPoint;
-
+    
     public List<GameObject> teammates;
     
-    [SerializeField] float cooldownTime = 1f;
     [SerializeField] public bool autoShoot;
+
+    public TurretStats stats;
 
     [FoldoutGroup("Events")] public UnityEvent beforeShoot;
 
@@ -21,7 +21,7 @@ public class Turret : MonoBehaviour, ICacheRequester
 
     void Awake()
     {
-        nextShootTime = Time.time + cooldownTime;
+        nextShootTime = Time.time + stats.cooldownTime;
     }
 
     public void Update()
@@ -39,15 +39,31 @@ public class Turret : MonoBehaviour, ICacheRequester
         }
         
         beforeShoot?.Invoke();
+
+        var targetRotation = shootPoint.rotation;
+        var spreadAngle = UnityEngine.Random.Range(-stats.spread / 2f, stats.spread / 2f);
+        targetRotation = targetRotation * Quaternion.Euler(0f, 0f, spreadAngle);
         
-        var bullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation, cacheParent).GetComponent<Bullet>();
+        var bullet = Instantiate(stats.bulletPrefab, shootPoint.position, targetRotation, cacheParent).GetComponent<Bullet>();
+        if (stats.bulletStats){
+            bullet.stats = stats.bulletStats;
+        }
         bullet.IgnoreGameObject(gameObject);
         bullet.IgnoreGameObjects(teammates);
-        nextShootTime = Time.time + cooldownTime;
+        nextShootTime = Time.time + stats.cooldownTime;
     }
 
     public void SetCacheParent(Transform parent)
     {
         cacheParent = parent;
     }
+}
+
+[Serializable][BoxGroup("Turret Stats")][InlineProperty][HideLabel]
+public class TurretStats
+{
+    [Required] public GameObject bulletPrefab;
+    public float cooldownTime = 1f;
+    public float spread = 0f;
+    public Optional<BulletStats> bulletStats = new Optional<BulletStats>();
 }

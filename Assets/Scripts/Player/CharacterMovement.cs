@@ -8,6 +8,7 @@ class CharacterMovement : MonoBehaviour
     [SerializeField] float speed = 5f;
     
     Vector2 movement;
+    Vector2 lookPoint;
 
     public void SetMovementInput(Vector2 inputVector)
     {
@@ -16,14 +17,15 @@ class CharacterMovement : MonoBehaviour
 
     public void SetTarget(Vector2 lookPoint)
     {
-        var lookDir = lookPoint - (Vector2)transform.position;
-        // lookDir.Normalize();
-        rb.transform.rotation = Quaternion.LookRotation(Vector3.forward, lookDir);
+        this.lookPoint = lookPoint;
     }
     
     void FixedUpdate()
     {
         Vector2 move = movement * (speed * Time.fixedDeltaTime);
         rb.MovePosition(rb.position + move);
+        
+        var lookDir = lookPoint - (Vector2)transform.position;
+        rb.transform.rotation = Quaternion.LookRotation(Vector3.forward, lookDir);
     }
 }

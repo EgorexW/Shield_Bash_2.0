@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 494067682400028145, guid: 7f937f219fa094a39a282878f135b5aa, type: 3}
       propertyPath: m_Name
-      value: Turret Variant
+      value: Big Turret
       objectReference: {fileID: 0}
     - target: {fileID: 1264931089798654726, guid: 7f937f219fa094a39a282878f135b5aa, type: 3}
       propertyPath: health.value
@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: cooldownTime
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 3228521346077528234, guid: 7f937f219fa094a39a282878f135b5aa, type: 3}
+      propertyPath: stats.bulletPrefab
+      value: 
+      objectReference: {fileID: 8381528459714755464, guid: 6aa468a035c3b40db993ce4477c01485, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

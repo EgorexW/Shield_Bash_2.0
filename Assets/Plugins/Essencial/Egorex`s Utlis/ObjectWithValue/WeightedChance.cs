@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class WeightedChance
+public static class ObjectWithValueExtentions
 {
-    public static ObjectWithValue<T> GetWeightedRoll<T>(List<ObjectWithValue<T>> weightedChances)
+    public static ObjectWithValue<T> GetWeightedRoll<T>(this List<ObjectWithValue<T>> weightedChances)
     {
         ObjectWithValue<T> win = null;
         float totalWeight = 0;

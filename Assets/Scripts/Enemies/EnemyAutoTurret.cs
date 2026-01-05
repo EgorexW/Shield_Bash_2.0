@@ -2,7 +2,7 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class EnemyTurret : MonoBehaviour
+public class EnemyAutoTurret : MonoBehaviour
 {
     [BoxGroup("References")][Required][SerializeField] Enemy enemy;
     [BoxGroup("References")][Required][SerializeField] Turret turret;

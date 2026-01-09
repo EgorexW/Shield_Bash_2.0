@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour
     [BoxGroup("References")] [Required] [SerializeField] PrefabList levelsPrefabList;
     [BoxGroup("References")] [Required] [SerializeField] LevelReference levelReference;
     [BoxGroup("References")] [Required] [SerializeField] Transform levelCacheParent;
+    [BoxGroup("References")][Required][SerializeField] Camera playerCamera;
 
     [ReadOnly] [SerializeField] Level loadedLevel;
 
@@ -20,6 +21,7 @@ public class LevelManager : MonoBehaviour
         }
         loadedLevel = Instantiate(levelInfo.nextLevel, transform).GetComponent<Level>();
         Debug.Assert(loadedLevel != null, "Loaded level does not contain a Level component");
+        playerCamera.orthographicSize = loadedLevel.LevelSize;
         loadedLevel.Load(levelInfo, levelReference);
     }
 

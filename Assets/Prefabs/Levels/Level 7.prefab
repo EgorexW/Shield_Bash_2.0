@@ -13,6 +13,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 20229885917766207, guid: 4f3219b76973b44cf88ca263c509e9cb, type: 3}
+      propertyPath: levelSize
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 20229885917766207, guid: 4f3219b76973b44cf88ca263c509e9cb, type: 3}
       propertyPath: prefabListIndexHolder
       value: 
       objectReference: {fileID: 266562673315217167}

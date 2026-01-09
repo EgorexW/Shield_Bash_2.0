@@ -3773,6 +3773,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: The Knight
       objectReference: {fileID: 0}
+    - target: {fileID: 4396583669664749282, guid: 9cc5ee315e5594327957628c969b4127, type: 3}
+      propertyPath: destroyOnDeath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5957176803808012453, guid: 9cc5ee315e5594327957628c969b4127, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

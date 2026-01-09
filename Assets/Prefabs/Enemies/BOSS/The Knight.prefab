@@ -161,7 +161,7 @@ MonoBehaviour:
       m_Calls: []
   movementHandler: {fileID: 4322834540971105693}
   enemy: {fileID: 2493816179325244925}
-  speed: 15
+  speed: 20
   maxDistance: 15
 --- !u!1 &2152954086821198457
 GameObject:
@@ -595,7 +595,7 @@ MonoBehaviour:
         pierce: 0
         damage:
           value: 1
-  bulletsNr: 100
+  bulletsNr: 50
   windUp: 1
 --- !u!1 &5981436714767166442
 GameObject:

@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    [SerializeField] [GetComponent] PrefabListIndexHolder prefabListIndexHolder;
-    public LevelReference levelReference;
+    [BoxGroup("References")][GetComponent][SerializeField] PrefabListIndexHolder prefabListIndexHolder;
     [BoxGroup("References")] [Required] [SerializeField] ExitsManager exitsManager;
 
+    [SerializeField] float levelSize = 10;
+    
+    [HideInInspector] public LevelReference levelReference;
+    public float LevelSize => levelSize;
+    
     public void Unload()
     {
         // Implement level unloading logic here

@@ -252,9 +252,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06625a700bd14414ad4e4d6895e80293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Level
-  levelReference: {fileID: 0}
   prefabListIndexHolder: {fileID: -7461204580274333006}
   exitsManager: {fileID: 5946774010525024181}
+  levelSize: 10
+  levelReference: {fileID: 0}
 --- !u!114 &-7461204580274333006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1844,10 +1845,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6485282439312418178}
   - component: {fileID: 4704535744682995225}
-  - component: {fileID: 8410923860804422335}
+  - component: {fileID: 8085946273928927410}
   m_Layer: 0
-  m_Name: Camera Size
-  m_TagString: EditorOnly
+  m_Name: Level Size
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1862,8 +1863,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 36, y: 20.16, z: 1.4399999}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 35.555557, y: 20, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6715474279375342764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1926,7 +1927,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &8410923860804422335
+--- !u!114 &8085946273928927410
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1935,9 +1936,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8549299982091283646}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ebe85af765aa44f782297a16b2d30dc, type: 3}
+  m_Script: {fileID: 11500000, guid: cdde4dccbb5b84909809c4e3b0faf843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  spriteRenderer: {fileID: 4704535744682995225}
+  level: {fileID: 20229885917766207}
 --- !u!1001 &3239022098568960484
 PrefabInstance:
   m_ObjectHideFlags: 0

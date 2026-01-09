@@ -1371,6 +1371,7 @@ MonoBehaviour:
   levelsPrefabList: {fileID: 11400000, guid: 2671116a874ad4ac1bb1619b7fc37015, type: 2}
   levelReference: {fileID: 1263653752}
   levelCacheParent: {fileID: 1046707207}
+  playerCamera: {fileID: 519420031}
   loadedLevel: {fileID: 0}
 --- !u!4 &1263653751
 Transform:

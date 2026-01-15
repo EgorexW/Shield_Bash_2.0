@@ -28,6 +28,7 @@ public class AdvancedMovementHandler : EnemyMovementHandler
                 activeMovementProvider = movementProvider;
             }
         }
+        activeMovementProvider.Refresh();
     }
 
     public override void SetTarget(Vector3 targetPosition, IEnemyMovementProvider provider)
@@ -35,7 +36,6 @@ public class AdvancedMovementHandler : EnemyMovementHandler
         if (provider != activeMovementProvider){
             return;
         }
-        SetDefaultSpeed();
         characterMovement.SetTarget(targetPosition);
     }
 

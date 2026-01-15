@@ -25,4 +25,6 @@ public interface IEnemyMovementProvider
     {
         return 1;
     }
+
+    void Refresh();
 }

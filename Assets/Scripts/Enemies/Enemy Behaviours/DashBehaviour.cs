@@ -36,7 +36,8 @@ public class DashBehaviour : EnemyBehaviour, IEnemyMovementProvider
         targetPos = enemy.GetTargetPosition();
         Vector2 targetDir = (targetPos - (Vector2)transform.position).normalized;
         var distance = maxDistance;
-        endTime = Time.time + speed/distance;
+        endTime = Time.time + distance/speed;
+        Debug.DrawLine(transform.position, (Vector2)transform.position + targetDir * distance, Color.yellow, 1);
         movementHandler.SetMovementInputAndSpeed(targetDir, speed, this);
     }
 
@@ -49,5 +50,10 @@ public class DashBehaviour : EnemyBehaviour, IEnemyMovementProvider
     public float GetPriority()
     {
         return behaviourActive ? 2 : 0;
+    }
+
+    public void Refresh()
+    {
+        // No additional state to refresh
     }
 }

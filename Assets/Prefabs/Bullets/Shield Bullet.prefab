@@ -123,6 +123,10 @@ PrefabInstance:
       propertyPath: bulletStats.pierce
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2572695976702169712, guid: b0c3ec090c439463dac27fe69600f3d4, type: 3}
+      propertyPath: instantiateOnDestroy
+      value: 
+      objectReference: {fileID: 5898900622798014720, guid: 546715c1301d34f67ae5164fa08611a0, type: 3}
     - target: {fileID: 3389074347925065610, guid: b0c3ec090c439463dac27fe69600f3d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

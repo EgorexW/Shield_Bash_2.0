@@ -39,4 +39,9 @@ public class EnemyMantainDistanceMovement : MonoBehaviour, IEnemyMovementProvide
             movementHandler.SetMovementInput(General.RandomPointOnCircle(), this);
         }
     }
+
+    public void Refresh()
+    {
+        movementHandler.SetMovementInput(General.RandomPointOnCircle(), this);
+    }
 }

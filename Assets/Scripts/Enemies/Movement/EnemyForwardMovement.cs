@@ -24,4 +24,9 @@ public class EnemyForwardMovement : MonoBehaviour, IEnemyMovementProvider
         Vector2 targetDir = (target.position - transform.position).normalized;
         movementHandler.SetMovementInput(targetDir, this);
     }
+
+    public void Refresh()
+    {
+        // No additional state to refresh
+    }
 }

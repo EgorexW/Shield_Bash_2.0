@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     [BoxGroup("References")] [Required] [SerializeField] Rigidbody2D rb;
 
     [FormerlySerializedAs("bulletStats")] [SerializeField] public BulletStats stats;
+    [SerializeField] GameObject instantiateOnDestroy;
 
     readonly List<GameObject> ignoreObjects = new();
     float deathTime;
@@ -56,6 +57,7 @@ public class Bullet : MonoBehaviour
 
     void Destroy()
     {
+        Instantiate(instantiateOnDestroy, transform.position, Quaternion.identity, transform.parent);
         Destroy(gameObject);
     }
 

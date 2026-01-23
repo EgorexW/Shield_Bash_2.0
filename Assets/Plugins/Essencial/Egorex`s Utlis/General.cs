@@ -298,6 +298,23 @@ public class General : MonoBehaviour
         }
         return components;
     }
+
+    public static Vector2 RandomPointInsideCollider2D(Collider2D collider2D)
+    {
+        Vector2 pos = collider2D.bounds.center;
+        for (int i = 0; i < General.Iterationlimit; i++){
+            Vector2 posTmp = new Vector2(
+                Random.Range(collider2D.bounds.min.x, collider2D.bounds.max.x),
+                Random.Range(collider2D.bounds.min.y, collider2D.bounds.max.y)
+            );
+            if (!collider2D.OverlapPoint(posTmp)){
+                continue;
+            }
+            pos = posTmp;
+            break;
+        }
+        return pos;
+    }
 }
 
 public interface INamed

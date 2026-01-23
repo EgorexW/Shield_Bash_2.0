@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3580145624785981095}
-  - component: {fileID: 5588748761731677769}
+  - component: {fileID: 8398252310597623432}
   m_Layer: 6
-  m_Name: Save Point
+  m_Name: Heal Power
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 4232254590646696697}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5588748761731677769
+--- !u!114 &8398252310597623432
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,11 +43,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3801403124447622917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28b2255fe79bd4184b3de4860ef12150, type: 3}
+  m_Script: {fileID: 11500000, guid: 79a13d1bee84b40cab8816ba737ba2d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  level: {fileID: 0}
   playerTrigger: {fileID: 3258804594208148184}
+  healAmount: 1
 --- !u!1 &4793461040773481537
 GameObject:
   m_ObjectHideFlags: 0

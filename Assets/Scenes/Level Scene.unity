@@ -239,6 +239,7 @@ MonoBehaviour:
   levelManager: {fileID: 1263653750}
   shield: {fileID: 1739741113}
   characterHealth: {fileID: 6937384}
+  saveSystem: {fileID: 375023719}
 --- !u!114 &6937384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2110,7 +2111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5464f0967db341b6b0b6ebe0babef53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  player: {fileID: 6937383}
   footprintPrefab: {fileID: 8906440840108002375, guid: afce5913ceb094a2f8d472702d323d45, type: 3}
   stepInterval: 0.4
 --- !u!1 &2005409218

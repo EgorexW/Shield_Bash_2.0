@@ -11,6 +11,7 @@ public class Health
     public float value = 1;
     public float maxValue = 1;
 
+    public bool isMax => Mathf.Approximately(value, maxValue);
     public bool isAlive => value > 0;
 
     public void Damage(Damage damage)

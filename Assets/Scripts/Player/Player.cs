@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [BoxGroup("References")] [Required] [SerializeField] LevelManager levelManager;
     [BoxGroup("References")] [Required] [SerializeField] Shield shield;
     [BoxGroup("References")] [Required] [SerializeField] CharacterHealth characterHealth;
+    [BoxGroup("References")] [Required] [SerializeField] SaveSystem saveSystem;
 
     public Shield Shield => shield;
     public CharacterHealth CharacterHealth => characterHealth;
@@ -26,5 +27,10 @@ public class Player : MonoBehaviour
     public Transform GetCacheParent()
     {
         return levelManager.GetPlayerCacheParent();
+    }
+
+    public void SaveGame()
+    {
+        saveSystem.Save();
     }
 }

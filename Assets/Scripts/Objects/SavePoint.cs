@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class SavePoint : MonoBehaviour
 {
-    [BoxGroup("References")] [Required] [SerializeField] Level level;
     [SerializeField] PlayerTrigger playerTrigger;
 
     void Start()
@@ -14,6 +13,6 @@ public class SavePoint : MonoBehaviour
     void Save(Player player)
     {
         player.CharacterHealth.Heal();
-        level.levelReference.SaveGame();
+        player.SaveGame();
     }
 }

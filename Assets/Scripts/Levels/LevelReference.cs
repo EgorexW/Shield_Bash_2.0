@@ -31,4 +31,9 @@ public class LevelReference : MonoBehaviour
     {
         saveSystem.Save();
     }
+
+    public SaveData GetSaveData()
+    {
+        return saveSystem.data;
+    }
 }

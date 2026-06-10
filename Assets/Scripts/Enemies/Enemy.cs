@@ -63,5 +63,6 @@ public static class EnemyExtensions
 public enum EnemyState
 {
     Inactive,
-    Active
+    Active,
+    Dead
 }

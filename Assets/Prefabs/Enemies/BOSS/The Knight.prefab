@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 1596432494591117055}
   - component: {fileID: 2216222969275239594}
   - component: {fileID: 4322834540971105693}
+  - component: {fileID: 8941979730630819601}
   m_Layer: 0
   m_Name: The Knight
   m_TagString: Untagged
@@ -427,6 +428,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AdvancedMovementHandler
   characterMovement: {fileID: 4883868151176298585}
   defaultSpeed: -1
+--- !u!114 &8941979730630819601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2154285719406471826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55969bede6af34ce2ab8c235d35133a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  enemy: {fileID: 2493816179325244925}
+  characterHealth: {fileID: 4396583669664749282}
+  spriteRenderer: {fileID: 4854982336201093469}
+  collider2D: {fileID: 740497489129765409}
 --- !u!1 &3580959710405707389
 GameObject:
   m_ObjectHideFlags: 0
